@@ -1,0 +1,17 @@
+{
+  "name": "clonemongo",
+  "version": "1.0.0",
+  "description": "Clone mongodb database",
+  "main": "mongo_import.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Banlinea S.A.S",
+  "keywords": [
+    "mongo"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.1.18"
+  }
+}
