@@ -65,7 +65,18 @@ function getServerCollections(excludeList, db, callBack) {
     } else {
         console.error("db wouldn't open");
     }
-}
+};
+
+function clearLocalDatabases(db, callBack){
+    "use strict";
+    var adminDb = db.admin();
+    adminDb.listDatabases().then(function(dbs) {
+        dbs.forEach(function(database, index, array){
+            console.log(database.name);
+        });
+        callBack();
+    });
+};
 
 function cloneDatabases(databaseNames, sourceServerUrl, db, callBack) {
     "use strict";
@@ -111,8 +122,12 @@ openDbFromUrl(sourceUrl, function (err, source) {
                     console.error(err2);
                     process.exit(1);
                 }else{
-                    cloneDatabases(databaseList,sourceUrl,target,function(){
+                    /*cloneDatabases(databaseList,sourceUrl,target,function(){
                         console.log("Ended process");
+                        process.exit(1);
+                    });*/
+                    clearLocalDatabases(target,function(){
+                        console.log("Proceso finalizado");
                         process.exit(1);
                     });
                 }
